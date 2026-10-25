@@ -1,0 +1,54 @@
+{
+  "tor": {
+    "enabled": true,
+    "controlPort": 9051,
+    "socksPort": 9050,
+    "binary": "/usr/bin/tor",
+    "restartOnExit": true,
+    "newNymCircuitWaitSeconds": 30
+  },
+  "ipFilter": {
+    "poolSize": 5,
+    "verifyTimeoutMs": 20000,
+    "maxPoolSize": 20,
+    "cooldownMs": 60000
+  },
+  "geo": {
+    "mapping": {
+      "US": { "locale": "en-US", "timezone": "America/New_York", "language": "en" },
+      "DE": { "locale": "de-DE", "timezone": "Europe/Berlin", "language": "de" },
+      "GB": { "locale": "en-GB", "timezone": "Europe/London", "language": "en" },
+      "FR": { "locale": "fr-FR", "timezone": "Europe/Paris", "language": "fr" },
+      "JP": { "locale": "ja-JP", "timezone": "Asia/Tokyo", "language": "ja" },
+      "BR": { "locale": "pt-BR", "timezone": "America/Sao_Paulo", "language": "pt" },
+      "IN": { "locale": "en-IN", "timezone": "Asia/Kolkata", "language": "en" }
+    }
+  },
+  "browser": {
+    "executablePath": "/usr/bin/chromium",
+    "headless": true,
+    "isolatedContext": true,
+    "blockImages": true,
+    "blockMedia": true,
+    "blockFonts": true,
+    "mobileViewport": { "width": 390, "height": 844 },
+    "touchEnabled": true,
+    "locale": "en-US",
+    "timezoneId": "America/New_York"
+  },
+  "concurrency": {
+    "maxContexts": 10,
+    "contextMemoryMb": 200,
+    "initialBudgetMb": 1024
+  },
+  "retries": {
+    "maxConsecutive": 3,
+    "baseDelayMs": 5000,
+    "maxDelayMs": 120000,
+    "jitterRatio": 0.3
+  },
+  "session": {
+    "dir": "/workspace/app/sessions",
+    "saveOnSuccess": true
+  }
+}
