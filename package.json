@@ -1,0 +1,20 @@
+{
+  "name": "ig-otp-fuzz",
+  "version": "1.0.0",
+  "description": "Production-ready multi-agent Instagram OTP fuzz harness with TOR + IP filtering + patchright/Chromium",
+  "main": "main.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node main.js",
+    "test": "node -e \"require('./main.js')\""
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "patchright": "^1.49.0"
+  },
+  "optionalDependencies": {
+    "playwright-core": "^1.49.0"
+  }
+}

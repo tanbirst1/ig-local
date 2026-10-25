@@ -1,0 +1,8 @@
+{
+  "tor": { "socksPort": 9050, "controlPort": 9051, "dataDir": "/tmp/kilo/tor-data" },
+  "ipFilter": { "blockedCountries": [], "allowedCountries": [] },
+  "chromium": { "executablePath": "/usr/bin/chromium", "headless": true, "viewport": { "width": 390, "height": 844 } },
+  "ig": { "mobile": true, "locale": "auto" },
+  "optimization": { "maxBoots": 3, "reverifyWinner": true, "exponentialJitter": true, "workWindow": false },
+  "translator": { "enabled": true, "fallback": "en" }
+}
