@@ -36,7 +36,7 @@ class OTPLoginRunner {
   async startTor() {
     const result = await this.torManager.start();
     if (!result.success) {
-      throw new Error(`Tor failed to start: ${result.message}`);
+      throw new Error(`Tor failed to start: ${result.error || result.message || 'unknown error'}`);
     }
     return result;
   }
@@ -381,7 +381,8 @@ async function main() {
 
 if (require.main === module) {
   main().catch((err) => {
-    console.error('Fatal error:', err.message);
+    console.error('Fatal error:', err.message || err);
+    console.error('Stack:', err.stack || '');
     process.exit(1);
   });
 }

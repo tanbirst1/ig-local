@@ -43,7 +43,10 @@ class TorManager {
       });
 
       this.process.on('error', (err) => {
-        reject({ success: false, error: err.message });
+        const error = new Error('Tor spawn failed: ' + err.message);
+        error.success = false;
+        error.error = err.message;
+        reject(error);
       });
 
       this.process.on('exit', (code) => {
@@ -56,7 +59,10 @@ class TorManager {
 
       setTimeout(() => {
         if (!this.running) {
-          reject({ success: false, error: 'Tor startup timeout' });
+          const error = new Error('Tor startup timeout');
+          error.success = false;
+          error.error = 'Tor startup timeout';
+          reject(error);
         }
       }, 60000);
     });
@@ -86,16 +92,20 @@ class TorManager {
             socket.end();
             setTimeout(() => resolve({ success: true }), this.config.newNymCircuitWaitSeconds * 1000);
           }
-        } else if (buffer.includes('515')) {
-          socket.end();
-          reject({ success: false, error: 'Authentication failed' });
         }
       });
-
-      socket.on('error', (err) => reject({ success: false, error: err.message }));
+      socket.on('error', (err) => {
+        const error = new Error('Tor control port error: ' + err.message);
+        error.success = false;
+        error.error = err.message;
+        reject(error);
+      });
       socket.setTimeout(30000, () => {
         socket.destroy();
-        reject({ success: false, error: 'Control port timeout' });
+        const error = new Error('Control port timeout');
+        error.success = false;
+        error.error = 'Control port timeout';
+        reject(error);
       });
     });
   }
@@ -132,7 +142,7 @@ class TorManager {
   }
 
   getSocksProxy() {
-    return `socks5://127.0.0.1:${this.socksPort}`;
+    return 'socks5://127.0.0.1:' + this.socksPort;
   }
 
   isRunning() {

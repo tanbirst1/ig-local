@@ -1,5 +1,3 @@
-const translator = require('../translator');
-
 class BlockClassifier {
   static classify(url, bodyText, title) {
     const text = (bodyText || '') + ' ' + (title || '');
