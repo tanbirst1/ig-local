@@ -1,0 +1,6 @@
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
+interface:
+  display_name: "YOLO Models"
+  short_description: "Choose and compare Ultralytics YOLO models"
+  default_prompt: "Use $yolo-models to pick the right YOLO model and size for my task and hardware."
