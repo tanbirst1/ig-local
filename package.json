@@ -1,0 +1,8 @@
+{
+  "name": "auto-reset",
+  "version": "1.0.0",
+  "main": "auto_reset.js",
+  "dependencies": {
+    "patchright": "^1.0.0"
+  }
+}
